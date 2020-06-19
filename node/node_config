@@ -1,0 +1,4 @@
+BUILD_ROOT="/path/to/binaries/2.0.4"
+CLIENT_BIN="$BUILD_ROOT/bin/cleos"
+NODEOS_BIN="$BUILD_ROOT/bin/nodeos"
+CPU="0"
