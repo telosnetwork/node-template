@@ -51,6 +51,13 @@ And set the `BUILD_ROOT` variable
 BUILD_ROOT="/telos/eosio/bin/2.0.6"
 ```
 
+## Setup config.ini
+### Review
+Review the config.ini file to get familiar with it, adjust as needed
+
+### Set the ports
+Make sure you set the ports to ones that are not already in use on this server by other nodes
+
 ## Start the node from genesis to begin the sync
 ```shell
 cd /telos/nodes/testnet1
