@@ -31,7 +31,7 @@ cat testnet/peers.ini >> config.ini
 Pick a version to download from https://github.com/EOSIO/eos/releases
 ```shell
 wget https://github.com/EOSIO/eos/releases/download/v2.0.6/eosio_2.0.6-1-ubuntu-18.04_amd64.deb
-sudo apt install eosio_2.0.6-1-ubuntu-18.04_amd64.deb
+sudo apt install ./eosio_2.0.6-1-ubuntu-18.04_amd64.deb
 ```
 
 ## Move binaries
