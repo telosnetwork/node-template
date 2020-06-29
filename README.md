@@ -63,3 +63,14 @@ Make sure you set the ports to ones that are not already in use on this server b
 cd /telos/nodes/testnet1
 ./start.sh --genesis-json ./testnet/genesis.json
 ```
+
+## Configure public access
+This assumes the node operator has reasonable system administration skills, which should be expected of a Telos block producer.
+### P2P
+Point DNS at the server and expose the p2p port (`p2p-listen-endpoint`), this is your seed/p2p endpoint and is only tcp, it does not require anything in front of it.  If you wish you can use a tcp load balancer such as haproxy in front of the p2p, then you'll point the DNS at the load balancer.
+### API
+Install something like nginx or haproxy and point DNS at it for your API endpoint, configure it for SSL.
+
+A popular option is to put nginx in front of it using auto-renewing and free SSL certs from Let's Encrypt - https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04
+
+You'll want to configure nginx in this case for a reverse proxy, and point it at your `http-server-address`
