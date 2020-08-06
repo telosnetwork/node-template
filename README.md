@@ -48,7 +48,7 @@ vi /telos/nodes/testnet1/node_config
 ```
 And set the `BUILD_ROOT` variable
 ```
-BUILD_ROOT="/telos/eosio/2.0.6/bin"
+BUILD_ROOT="/telos/eosio/2.0.6"
 ```
 
 ## Setup config.ini
