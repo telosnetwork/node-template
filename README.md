@@ -10,6 +10,11 @@ sudo chown telos: /telos
 sudo chown telos: /var/log/nodeos
 ```
 
+## Install packages
+```
+sudo apt install schedtool
+```
+
 ## Download this template
 To create a new node at /telos/nodes/testnet1:
 ```shell
