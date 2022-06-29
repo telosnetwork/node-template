@@ -1,6 +1,8 @@
 # Telos node template files
 Examples to simplify running a Telos node.  These examples assume you're running Ubuntu 18.04
 
+For a local dev node, check out the [Dev setup](DEV_SETUP.md)
+
 ## Setup directories
 Create a directory to store nodes and binaries in, setup a log directory and set their permissions.  Let's assume your user is named `telos` and you want to store everything in a directory named `/telos`
 ```shell
