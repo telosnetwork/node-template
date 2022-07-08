@@ -83,15 +83,15 @@ cleos push action eosio.token issue '["eosio","100000000.0000 TLOS","Issue max s
 
 Create system accounts
 ```bash
-cleos create account eosio eosio.bpay EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.vpay EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.msig EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.names EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.ram EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.ramfee EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.rex EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.saving EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
-cleos create account eosio eosio.stake EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.bpay <Pubaddress>
+cleos create account eosio eosio.vpay 
+cleos create account eosio eosio.msig 
+cleos create account eosio eosio.names 
+cleos create account eosio eosio.ram 
+cleos create account eosio eosio.ramfee 
+cleos create account eosio eosio.rex 
+cleos create account eosio eosio.saving 
+cleos create account eosio eosio.stake 
 ```
 
 Deploy the system contract
