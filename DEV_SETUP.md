@@ -45,6 +45,10 @@ and change these two, seting the key to be the one you generated above
 producer-name = eosio
 signature-provider = EOS6nrS...=KEY:5HxQ...
 ```
+Also, uncomment the producer API plugin
+```
+plugin = eosio::producer_api_plugin
+```
 
 Start the node for the first time
 ```bash
@@ -64,4 +68,36 @@ Stop the node
 Start the node in dev mode, this is how you will start the node from now on:
 ```bash
 ./start.sh --enable-stale-production
+```
+
+Deploy the token contract
+
+NOTE: Can only create accounts using this command before the system contract is deployed, once it's deployed you must use `cleos system newaccount ...`
+```bash
+cleos create account eosio eosio.token <KEY FROM BEFORE> <KEY FROM BEFORE>
+cd contracts/eosio.token
+cleos set contract eosio.token . ./eosio.token.wasm ./eosio.token.abi
+cleos push action eosio.token create '["eosio","100000000.0000 TLOS"]' -p eosio.token@active
+cleos push action eosio.token issue '["eosio","100000000.0000 TLOS","Issue max supply to eosio"]' -p eosio@active
+```
+
+Create system accounts
+```bash
+cleos create account eosio eosio.bpay EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.vpay EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.msig EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.names EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.ram EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.ramfee EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.rex EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.saving EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+cleos create account eosio eosio.stake EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC EOS6nrSC2e76iB6Ap1R3j8SV1Wb5k4xxUjcVMQeQQ9z1BRQNYarQC
+```
+
+Deploy the system contract
+```bash
+curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' | jq
+cd contracts/eosio.system
+cleos set contract eosio . ./eosio.system.wasm ./eosio.system.abi
+cleos push action eosio init '[0,"4,TLOS"]' -p eosio@active
 ```
