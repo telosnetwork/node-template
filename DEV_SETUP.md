@@ -11,7 +11,7 @@ Don't bother with the directories setup, with the log localized, the whole node 
 
 To reset the node, either remove or rename the `data` directory
 
-First, generate a key pair to use for this local network's `eosio` super-user account This will be the Dev Env Keys for deploying contracts and setting permissions. 
+First, generate a key pair to use for this local network's `eosio` super-user account. **NOTE** SAVE THESE KEYS for creating system accounts at bottom
 ```bash
 cleos create key --to-console
 ```
