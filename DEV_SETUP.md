@@ -1,3 +1,9 @@
+# Local Dev Environment Tutorial
+
+
+__Clone the node template repo at the root of this directory and follow along to learn how to create a local EOSIO developer network.__
+
+
 Set LOCALIZE_LOG=true in node_config and set the nodeos and cleos binaries to be the name of the binary without a specific path:
 ```
 BUILD_ROOT="/path/to/binaries/2.0.4"
@@ -69,20 +75,9 @@ Start the node in dev mode, this is how you will start the node from now on:
 ```bash
 ./start.sh --enable-stale-production
 ```
-
-Deploy the token contract
-
-NOTE: Can only create accounts using this command before the system contract is deployed, once it's deployed you must use `cleos system newaccount ...`
+## Create system accounts
 ```bash
 cleos create account eosio eosio.token <KEY FROM BEFORE> <KEY FROM BEFORE>
-cd contracts/eosio.token
-cleos set contract eosio.token . ./eosio.token.wasm ./eosio.token.abi
-cleos push action eosio.token create '["eosio","100000000.0000 TLOS"]' -p eosio.token@active
-cleos push action eosio.token issue '["eosio","100000000.0000 TLOS","Issue max supply to eosio"]' -p eosio@active
-```
-
-Create system accounts
-```bash
 cleos create account eosio eosio.bpay <Pubaddress>
 cleos create account eosio eosio.vpay 
 cleos create account eosio eosio.msig 
@@ -94,7 +89,20 @@ cleos create account eosio eosio.saving
 cleos create account eosio eosio.stake 
 ```
 
-Deploy the system contract
+## Deploy the token contract
+
+NOTE: Can only create accounts using this command before the system contract is deployed, once it's deployed you must use `cleos system newaccount ...`
+```bash
+cleos create account eosio eosio.token <KEY FROM BEFORE> <KEY FROM BEFORE>
+cd contracts/eosio.token
+cleos set contract eosio.token . ./eosio.token.wasm ./eosio.token.abi
+cleos push action eosio.token create '["eosio","100000000.0000 TLOS"]' -p eosio.token@active
+cleos push action eosio.token issue '["eosio","100000000.0000 TLOS","Issue max supply to eosio"]' -p eosio@active
+```
+
+
+
+## Deploy the system contract
 ```bash
 curl -X POST http://127.0.0.1:8888/v1/producer/schedule_protocol_feature_activations -d '{"protocol_features_to_activate": ["0ec7e080177b2c02b278d5088611686b49d739925a92d9bfcacd7fc6b74053bd"]}' | jq
 cd contracts/eosio.system
