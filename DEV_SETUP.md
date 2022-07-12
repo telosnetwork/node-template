@@ -76,24 +76,32 @@ Start the node in dev mode, this is how you will start the node from now on:
 ./start.sh --enable-stale-production
 ```
 ## Create system accounts
+Now make sure that you have your key pair that we initialized in the beginning of tutorial. 
+
+If you want to double check your using the right key in your wallet simply run the command:
 ```bash
-cleos create account eosio eosio.token <KEY FROM BEFORE> <KEY FROM BEFORE>
-cleos create account eosio eosio.bpay <Pubaddress>
-cleos create account eosio eosio.vpay 
-cleos create account eosio eosio.msig 
-cleos create account eosio eosio.names 
-cleos create account eosio eosio.ram 
-cleos create account eosio eosio.ramfee 
-cleos create account eosio eosio.rex 
-cleos create account eosio eosio.saving 
-cleos create account eosio eosio.stake 
+cleos wallet private_keys -n <YourWalletName>
+```
+
+
+```bash
+cleos create account eosio eosio.token <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.bpay <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.vpay <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.msig <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.names <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.ram <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.ramfee <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.rex <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.saving <OwnerKey> <ActiveKey>
+cleos create account eosio eosio.stake <OwnerKey> <ActiveKey>
 ```
 
 ## Deploy the token contract
 
 NOTE: Can only create accounts using this command before the system contract is deployed, once it's deployed you must use `cleos system newaccount ...`
 ```bash
-cleos create account eosio eosio.token <KEY FROM BEFORE> <KEY FROM BEFORE>
+cleos create account eosio eosio.token <OwnerKey> <ActiveKey>
 cd contracts/eosio.token
 cleos set contract eosio.token . ./eosio.token.wasm ./eosio.token.abi
 cleos push action eosio.token create '["eosio","100000000.0000 TLOS"]' -p eosio.token@active
