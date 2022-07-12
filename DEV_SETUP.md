@@ -1,4 +1,4 @@
-# Local Dev Environment Tutorial
+# Local Dev Network Tutorial
 
 
 __Clone the node template repo at the root of this directory and follow along to learn how to create a local EOSIO developer network.__
