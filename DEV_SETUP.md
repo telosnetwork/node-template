@@ -85,6 +85,9 @@ cleos wallet private_keys -n <YourWalletName>
 
 
 ```bash
+Instructions for Cleos create account(Usage: cleos create account [OPTIONS] creator name OwnerKey [ActiveKey])
+
+
 cleos create account eosio eosio.token <OwnerKey> <ActiveKey>
 cleos create account eosio eosio.bpay <OwnerKey> <ActiveKey>
 cleos create account eosio eosio.vpay <OwnerKey> <ActiveKey>
