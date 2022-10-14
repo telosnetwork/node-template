@@ -4,3 +4,4 @@ genesis.json
 node-template.log
 nodeos.pid
 nohup.out
+.idea
