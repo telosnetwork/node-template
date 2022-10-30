@@ -1,7 +1,7 @@
 # Local Dev Network Tutorial
 
 
-__Clone the node template repo at the root of this directory and follow along to learn how to create a local EOSIO developer network.__
+__Clone the node template repo at the root of this directory and follow along to learn how to create a local AntelopeIO developer network.__
 
 
 Set LOCALIZE_LOG=true in node_config and set the nodeos and cleos binaries to be the name of the binary without a specific path:
@@ -37,7 +37,7 @@ Then generate a new `genesis.json` file
 nodeos --extract-genesis-json genesis.json
 ```
 
-Edit the genesis.json and set the `initial_key` to the key that you generated above for `eosio`:
+Edit the genesis.json and set the `initial_key` to the key that you generated above for `zzzz`:
 ```bash
 vi genesis.json
 ```
