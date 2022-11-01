@@ -1,5 +1,10 @@
-BUILD_ROOT="/path/to/binaries/2.0.4"
-CLIENT_BIN="$BUILD_ROOT/bin/cleos"
-NODEOS_BIN="$BUILD_ROOT/bin/nodeos"
-CPU="0"
+BUILD_ROOT="/path/to/leap/binaries/3.1.0"
+CLIENT_BIN="$BUILD_ROOT/cleos"
+NODEOS_BIN="$BUILD_ROOT/nodeos"
+
+#DATA_DIR=""
+
 LOCALIZE_LOG=false
+
+PIN_CPU=false
+CPU="0"
