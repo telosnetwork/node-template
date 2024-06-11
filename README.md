@@ -1,5 +1,5 @@
 # Telos node template files
-Examples to simplify running a Telos node.  These examples assume you're running Ubuntu 18.04
+Examples to simplify running a Telos node.  These examples assume you're running Ubuntu 22.04
 
 For a local dev node, check out the [Dev setup](DEV_SETUP.md)
 
@@ -44,8 +44,8 @@ Pick a version to download from https://github.com/AntelopeIO/leap/releases
 
 Select a stable release, likely the `latest` tagged one (not RC/Release Candidate) which is built for your OS Version
 ```shell
-wget https://github.com/AntelopeIO/leap/releases/download/v3.1.2/leap-3.1.2-ubuntu22.04-x86_64.deb
-sudo apt install ./leap-3.1.2-ubuntu22.04-x86_64.deb
+wget https://github.com/AntelopeIO/leap/releases/download/v5.0.2/leap_5.0.2_amd64.deb
+sudo apt install ./leap_5.0.2_amd64.deb
 ```
 
 ## Move binaries
@@ -55,8 +55,8 @@ The strategy here is that in the `/telos/leap` directory you have a directory fo
 
 Note, installing the `.deb` file will put all the binaries (`nodeos`,`cleos`,`keosd`) in your path, if you simply use the binary name (e.g. `nodeos` without a path) it will use the most recently installed version.  For the purposes of running a node, the only binary which needs to be copied and versioned in this way would be `nodeos`
 ```shell
-mkdir -p /telos/leap/3.1.2
-cp -a /usr/bin/nodeos /telos/leap/3.1.2/
+mkdir -p /telos/leap/5.0.2
+cp -a /usr/bin/nodeos /telos/leap/5.0.2/
 ```
 
 ## Setup node_config
@@ -68,7 +68,7 @@ vi /telos/nodes/testnet1/node_config
 ### Set node version
 Now you know the path to the binaries, change that in the `node_config` file, set the `BUILD_ROOT` variable
 ```
-BUILD_ROOT="/telos/leap/3.1.2"
+BUILD_ROOT="/telos/leap/5.0.2"
 ```
 
 ### Distribute CPU load
