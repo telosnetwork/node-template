@@ -1,4 +1,4 @@
-BUILD_ROOT="/path/to/leap/binaries/3.1.0"
+BUILD_ROOT="/path/to/leap/binaries/5.0.2"
 CLIENT_BIN="$BUILD_ROOT/cleos"
 NODEOS_BIN="$BUILD_ROOT/nodeos"
 
