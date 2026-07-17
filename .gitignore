@@ -1,7 +1,18 @@
-data
-protocol_features
+data/
+protocol_features/
 genesis.json
 node-template.log
+nodeos.log
 nodeos.pid
 nohup.out
-.idea
+.idea/
+
+# Never commit local producer/finalizer secrets or safety state.
+*.private.ini
+*.secrets
+*.key
+*.keys
+finalizer-*.txt
+finalizers/
+safety.dat
+.nodeos-start.lock/

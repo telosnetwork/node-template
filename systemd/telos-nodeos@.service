@@ -1,0 +1,20 @@
+[Unit]
+Description=TelosZero Core node (%i)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=telos
+Group=telos
+UMask=0077
+WorkingDirectory=/var/lib/telos/%i
+ExecStart=/usr/bin/nodeos --config-dir=/etc/telos/%i --data-dir=/var/lib/telos/%i
+Restart=on-failure
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=300
+LimitNOFILE=1048576
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+# Public P2P relay/sentry in the path between a private producer and the Telos
+# network. It has no signing keys.
+
+http-server-address = 127.0.0.1:8888
+http-validate-host = false
+p2p-listen-endpoint = 0.0.0.0:9876
+agent-name = "@INSTANCE@"
+chain-state-db-size-mb = 32768
+protocol-features-dir = /var/lib/telos/@INSTANCE@/protocol_features
+
+plugin = eosio::http_plugin
+plugin = eosio::chain_plugin
+plugin = eosio::chain_api_plugin
+plugin = eosio::net_plugin
+
+# Mandatory on every relay hop. Zero or omitted drops Savanna votes.
+vote-threads = 4
+
+# Private producer plus public peers appended by scripts/render-config.sh.
+p2p-peer-address = <PRIVATE_PRODUCER_IP>:9876
