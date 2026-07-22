@@ -17,15 +17,15 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y shellcheck
       - name: Validate role profiles and scripts
         run: scripts/validate.sh
-      - name: Check shell and systemd files
-        run: |
-          shellcheck -x start.sh stop.sh tests/test-runner.sh scripts/render-config.sh scripts/validate.sh scripts/smoke-nodeos.sh
-          sudo useradd --system --home-dir /var/lib/telos --shell /usr/sbin/nologin telos 2>/dev/null || true
-          systemd-analyze verify systemd/telos-nodeos@.service
       - name: Install verified TelosZero Core package
         run: |
           curl -fLO https://github.com/telosnetwork/teloszero-core/releases/download/teloszero-v1.2.2/teloszero-core_1.2.2_amd64.deb
           echo '285fdfc1abde5104892d94b1f380c6d79aba35eac3413f139119ea88574c5007  teloszero-core_1.2.2_amd64.deb' | sha256sum --check --strict
           sudo apt-get install -y ./teloszero-core_1.2.2_amd64.deb
+      - name: Check shell and systemd files
+        run: |
+          shellcheck -x start.sh stop.sh tests/test-runner.sh scripts/render-config.sh scripts/validate.sh scripts/smoke-nodeos.sh
+          sudo useradd --system --home-dir /var/lib/telos --shell /usr/sbin/nologin telos 2>/dev/null || true
+          systemd-analyze verify systemd/telos-nodeos@.service
       - name: Parse every profile with TelosZero
         run: scripts/smoke-nodeos.sh
