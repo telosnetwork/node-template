@@ -1,10 +1,15 @@
-BUILD_ROOT="/path/to/leap/binaries/5.0.2"
-CLIENT_BIN="$BUILD_ROOT/cleos"
-NODEOS_BIN="$BUILD_ROOT/nodeos"
+# Manual start.sh compatibility settings. Production deployments should use the
+# systemd unit in systemd/telos-nodeos@.service instead.
+NODEOS_BIN="/usr/bin/nodeos"
 
-#DATA_DIR=""
+# Empty values resolve to this checkout's config and data directories.
+CONFIG_DIR=""
+DATA_DIR=""
 
-LOCALIZE_LOG=false
+LOCALIZE_LOG=true
+LOG_DIR="/var/log/nodeos"
+SHUTDOWN_TIMEOUT=300
 
-PIN_CPU=false
-CPU="0"
+# Production scripts refuse --enable-stale-production. Set this only for an
+# isolated local development chain that cannot connect to a production network.
+ALLOW_STALE_PRODUCTION=false

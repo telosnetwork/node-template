@@ -1,0 +1,28 @@
+# Pre-staged private backup producer/finalizer. This host must have a BLS key
+# that has never been used on another host.
+
+http-server-address = 127.0.0.1:8888
+http-validate-host = false
+p2p-listen-endpoint = <PRIVATE_BACKUP_IP>:9876
+agent-name = "<BP_ACCOUNT>-backup-producer"
+chain-state-db-size-mb = 32768
+protocol-features-dir = /var/lib/telos/@INSTANCE@/protocol_features
+
+plugin = eosio::http_plugin
+plugin = eosio::chain_plugin
+plugin = eosio::chain_api_plugin
+plugin = eosio::net_plugin
+plugin = eosio::producer_plugin
+
+producer-name = <BP_ACCOUNT>
+signature-provider = <PUB_K1_BLOCK_KEY>=KEY:<PVT_K1_BLOCK_KEY>
+signature-provider = <PUB_BLS_BACKUP_KEY>=KEY:<PVT_BLS_BACKUP_KEY>
+vote-threads = 4
+finalizers-dir = /var/lib/telos/finalizers/@INSTANCE@
+production-pause-vote-timeout-ms = 6000
+
+# This pauses K1 block production only. Finalizer voting is independent.
+pause-on-startup = true
+
+p2p-peer-address = <PRIVATE_RELAY_A>:9876
+p2p-peer-address = <PRIVATE_RELAY_B>:9876
