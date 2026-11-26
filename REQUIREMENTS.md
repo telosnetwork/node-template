@@ -61,7 +61,7 @@ another host. A chain snapshot does not recover finalizer voting history.
   writable protocol-feature files under the instance data directory.
 - Pre-register a distinct backup BLS key before an emergency.
 
-TelosZero 1.2.x BLS keys use the direct `KEY` provider, so host and file
+BLS finalizer keys use the direct `KEY` provider, so host and file
 protection are part of the signing boundary.
 
 ## Network and service security
