@@ -40,6 +40,12 @@ spring-util version full
 Installing the package may replace historical `leap`, `spring`, or
 `antelope-spring` packages that provide the same commands.
 
+For a native Ubuntu 24.04 source build with the OC runtime, follow the
+[Core build instructions on `release/1.4.1-teloszero`](https://github.com/telosnetwork/teloszero-core/blob/release/1.4.1-teloszero/README.md#build-from-source).
+That branch includes the LLVM 14 build change merged after the published 1.4.1
+tag. Record the exact commit and qualify the resulting binary separately
+before using it on a production validator.
+
 ## Choose one role per instance
 
 | Profile | Purpose | Signing keys | Vote threads |

@@ -56,7 +56,7 @@ finalizers-dir = /var/lib/telos/finalizers/mainnet-primary
 production-pause-vote-timeout-ms = 6000
 ```
 
-BLS supports the direct `KEY` provider in TelosZero 1.2.x; it cannot be loaded
+BLS finalizer keys use the direct `KEY` provider; they cannot be loaded
 through `keosd`. Install `config.ini` as `root:telos` with mode `0640` so the
 service can read but cannot rewrite the key-bearing configuration.
 
