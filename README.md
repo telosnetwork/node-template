@@ -12,13 +12,13 @@ host.
 
 ## Supported software
 
-The current public production artifact is
-[TelosZero Core 1.2.2](https://github.com/telosnetwork/teloszero-core/releases/tag/teloszero-v1.2.2):
+The latest published artifact is
+[TelosZero Core 1.4.1](https://github.com/telosnetwork/teloszero-core/releases/tag/teloszero-v1.4.1):
 
 ```text
-Package: teloszero-core_1.2.2_amd64.deb
-SHA-256: 285fdfc1abde5104892d94b1f380c6d79aba35eac3413f139119ea88574c5007
-Host validated by the release: Ubuntu 22.04, x86-64
+Package: teloszero-core_1.4.1_amd64.deb
+SHA-256: d9c8b841690270ab65e3b7aa267417c19af0d629c88a60323bd79e798166ecdc
+Package install and local testnet startup checked on Ubuntu 24.04, x86-64
 ```
 
 Use the exact tagged artifact approved for the target network. Do not replace
@@ -26,11 +26,11 @@ it with Leap, a random Spring build, or the `main` branch.
 
 ```bash
 cd /tmp
-curl -fLO https://github.com/telosnetwork/teloszero-core/releases/download/teloszero-v1.2.2/teloszero-core_1.2.2_amd64.deb
-echo '285fdfc1abde5104892d94b1f380c6d79aba35eac3413f139119ea88574c5007  teloszero-core_1.2.2_amd64.deb' \
+curl -fLO https://github.com/telosnetwork/teloszero-core/releases/download/teloszero-v1.4.1/teloszero-core_1.4.1_amd64.deb
+echo 'd9c8b841690270ab65e3b7aa267417c19af0d629c88a60323bd79e798166ecdc  teloszero-core_1.4.1_amd64.deb' \
   | sha256sum --check --strict
 sudo apt-get update
-sudo apt-get install -y ./teloszero-core_1.2.2_amd64.deb jq
+sudo apt-get install -y ./teloszero-core_1.4.1_amd64.deb jq
 
 nodeos --full-version
 cleos version client

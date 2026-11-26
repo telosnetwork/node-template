@@ -10,7 +10,10 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        os: [ubuntu-22.04, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - name: Install static-analysis tools
@@ -19,9 +22,9 @@ jobs:
         run: scripts/validate.sh
       - name: Install verified TelosZero Core package
         run: |
-          curl -fLO https://github.com/telosnetwork/teloszero-core/releases/download/teloszero-v1.2.2/teloszero-core_1.2.2_amd64.deb
-          echo '285fdfc1abde5104892d94b1f380c6d79aba35eac3413f139119ea88574c5007  teloszero-core_1.2.2_amd64.deb' | sha256sum --check --strict
-          sudo apt-get install -y ./teloszero-core_1.2.2_amd64.deb
+          curl -fLO https://github.com/telosnetwork/teloszero-core/releases/download/teloszero-v1.4.1/teloszero-core_1.4.1_amd64.deb
+          echo 'd9c8b841690270ab65e3b7aa267417c19af0d629c88a60323bd79e798166ecdc  teloszero-core_1.4.1_amd64.deb' | sha256sum --check --strict
+          sudo apt-get install -y ./teloszero-core_1.4.1_amd64.deb
       - name: Check shell and systemd files
         run: |
           shellcheck -x start.sh stop.sh tests/test-runner.sh scripts/render-config.sh scripts/validate.sh scripts/smoke-nodeos.sh
